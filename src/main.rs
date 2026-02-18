@@ -19,10 +19,10 @@ fn main() {
         .build()
         .expect("Failed to create window");
 
-    // Use software renderer (no GPU acceleration needed)
+    // Use hardware-accelerated renderer (GPU handles 2D texture blitting)
     let mut canvas = window
         .into_canvas()
-        .software()
+        .accelerated()
         .build()
         .expect("Failed to create canvas");
 

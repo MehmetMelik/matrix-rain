@@ -5,6 +5,8 @@ A Matrix-style falling character screensaver built in Rust with SDL2. Designed f
 ![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
+![Matrix Rain Screenshot](screenshot.png)
+
 ## Features
 
 - Half-width Katakana, Latin, digit, and symbol characters

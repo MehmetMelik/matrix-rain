@@ -1,11 +1,12 @@
 [package]
 name = "matrix-rain"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
 sdl2 = { version = "0.37", features = ["ttf", "unsafe_textures"] }
 rand = "0.8"
+chrono = "0.4"
 
 [profile.release]
 opt-level = 3

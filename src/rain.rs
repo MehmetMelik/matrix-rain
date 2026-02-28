@@ -62,6 +62,35 @@ impl Rain {
         }
     }
 
+    /// Apply clock overlay: dim rain in the backdrop zone so digits
+    /// stand out, but let rain trails flow through faintly for atmosphere.
+    pub fn apply_clock(&mut self, layout: &crate::clock::ClockLayout) {
+        let mut rng = rand::thread_rng();
+        let (c0, r0, c1, r1) = layout.zone;
+
+        // Dim rain in the backdrop — faint trails still visible
+        for col in c0..c1.min(self.cols) {
+            for row in r0..r1.min(self.rows) {
+                self.grid[col][row].brightness *= 0.15;
+            }
+        }
+
+        // Light up digit cells
+        for &(col, row) in &layout.cells {
+            if col < self.cols && row < self.rows {
+                let cell = &mut self.grid[col][row];
+                let has_rain = cell.brightness > 0.02;
+                // Digits always visible; rain passing through makes them pop
+                cell.brightness = if has_rain { 1.0 } else { 0.5 };
+                cell.is_head = has_rain && cell.is_head;
+                // Cycle characters for the matrix feel
+                if rng.gen::<f32>() < 0.05 {
+                    cell.char_idx = rng.gen_range(0..self.char_count);
+                }
+            }
+        }
+    }
+
     pub fn update(&mut self) {
         let mut rng = rand::thread_rng();
 

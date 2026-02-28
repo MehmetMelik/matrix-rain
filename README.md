@@ -13,6 +13,7 @@ A Matrix-style falling character screensaver built in Rust with SDL2. Designed f
 - Fullscreen with hidden cursor; exits on any keypress or mouse movement
 - 500ms grace period to ignore spurious input on launch
 - Integrates with swayidle as an idle screensaver
+- **Clock overlay** — sci-fi styled digital clock in the bottom-right corner, revealed by the rain with a dark backdrop for contrast (togglable)
 
 ## Prerequisites
 
@@ -65,6 +66,10 @@ Tuning constants are in `src/config.rs`:
 | `TRAIL_MIN` / `TRAIL_MAX` | 8 / 50 | Trail length range (cells) |
 | `SPAWN_CHANCE` | 0.015 | Probability of new drop per column per frame |
 | `MUTATE_CHANCE` | 0.03 | Probability of character flicker per cell per frame |
+| `SHOW_CLOCK` | true | Enable/disable the clock overlay |
+| `CLOCK_SCALE` | 2 | Clock digit size (each bitmap pixel = scale×scale cells) |
+| `CLOCK_PAD_X` / `CLOCK_PAD_Y` | 4 / 3 | Padding from bottom-right corner (cells) |
+| `CLOCK_MARGIN` | 3 | Dark zone margin around clock (cells) |
 
 ## License
 

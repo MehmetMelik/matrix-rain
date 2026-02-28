@@ -25,6 +25,16 @@ pub const GRACE_PERIOD_MS: u64 = 500;
 // Mouse movement threshold (pixels) to avoid jitter exits
 pub const MOUSE_THRESHOLD: i32 = 10;
 
+// Clock overlay in the bottom-right corner (revealed by rain)
+pub const SHOW_CLOCK: bool = true;
+// Scale factor for clock digits (each "pixel" becomes scale×scale grid cells)
+pub const CLOCK_SCALE: usize = 2;
+// Padding from bottom-right corner in grid cells
+pub const CLOCK_PAD_X: usize = 4;
+pub const CLOCK_PAD_Y: usize = 3;
+// Dark margin around clock digits (grid cells) for contrast
+pub const CLOCK_MARGIN: usize = 3;
+
 // Character set: half-width Katakana (U+FF66..U+FF9D) + Latin A-Z + digits + some symbols
 pub fn char_set() -> Vec<char> {
     let mut chars: Vec<char> = Vec::new();

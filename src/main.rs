@@ -1,3 +1,4 @@
+mod clock;
 mod config;
 mod rain;
 mod renderer;
@@ -86,6 +87,13 @@ fn main() {
 
         // Update simulation
         rain_sim.update();
+
+        // Apply clock overlay
+        if config::SHOW_CLOCK {
+            if let Some(layout) = clock::clock_layout(grid_cols, grid_rows) {
+                rain_sim.apply_clock(&layout);
+            }
+        }
 
         // Render
         renderer::render_frame(&mut canvas, &rain_sim, &mut atlas, cell_w, cell_h);

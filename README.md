@@ -1,6 +1,6 @@
 # Matrix Rain
 
-A Matrix-style falling character screensaver built in Rust with SDL2. Designed for the Raspberry Pi 500 running Wayland (labwc), using a software renderer for CPU-only operation.
+A Matrix-style falling character screensaver built in Rust with SDL2. Designed for the Raspberry Pi 500 running Wayland (labwc), using hardware-accelerated 2D rendering.
 
 ![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)

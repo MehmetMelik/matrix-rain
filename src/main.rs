@@ -32,10 +32,13 @@ fn main() {
 
     let (screen_w, screen_h) = canvas.output_size().unwrap();
 
-    // Load font
+    // Load fonts (primary + fallback for CJK/katakana)
     let font = ttf_context
         .load_font(config::FONT_PATH, config::FONT_SIZE)
         .expect("Failed to load font");
+    let fallback_font = ttf_context
+        .load_font(config::FALLBACK_FONT_PATH, config::FONT_SIZE)
+        .ok();
 
     // Calculate grid dimensions from font metrics
     let cell_w = font.size_of_char('W').unwrap().0;
@@ -46,7 +49,7 @@ fn main() {
     // Build character set and glyph atlas
     let chars = config::char_set();
     let texture_creator = canvas.texture_creator();
-    let mut atlas = renderer::GlyphAtlas::new(&font, &chars, &texture_creator);
+    let mut atlas = renderer::GlyphAtlas::new(&font, fallback_font.as_ref(), &chars, &texture_creator);
 
     // Initialize rain simulation
     let mut rain_sim = rain::Rain::new(grid_cols, grid_rows, chars.len());

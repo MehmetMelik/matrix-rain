@@ -1,5 +1,7 @@
 pub const FONT_PATH: &str =
     "/home/melik/.local/share/fonts/JetBrainsMonoNerdFontMono-Regular.ttf";
+pub const FALLBACK_FONT_PATH: &str =
+    "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf";
 pub const FONT_SIZE: u16 = 14;
 
 // Target frame rate

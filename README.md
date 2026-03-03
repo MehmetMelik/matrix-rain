@@ -29,6 +29,12 @@ A monospace font is required. The default config expects JetBrains Mono Nerd Fon
 ~/.local/share/fonts/JetBrainsMonoNerdFontMono-Regular.ttf
 ```
 
+Katakana characters are rendered using Droid Sans Fallback as a fallback font (pre-installed on Raspberry Pi OS):
+
+```
+/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
+```
+
 ## Build
 
 ```bash

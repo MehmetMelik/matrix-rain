@@ -15,17 +15,24 @@ pub struct GlyphAtlas {
 impl GlyphAtlas {
     pub fn new(
         font: &Font,
+        fallback_font: Option<&Font>,
         chars: &[char],
         texture_creator: &TextureCreator<WindowContext>,
     ) -> Self {
         let glyphs = chars
             .iter()
             .map(|&ch| {
-                let surface = font
+                // Use fallback font if primary font doesn't have this glyph
+                let use_font = if font.find_glyph(ch).is_none() {
+                    fallback_font.unwrap_or(font)
+                } else {
+                    font
+                };
+                let surface = use_font
                     .render_char(ch)
                     .blended(Color::WHITE)
                     .unwrap_or_else(|_| {
-                        // Fallback: render '?' if a character fails
+                        // Last resort: render '?' from primary font
                         font.render_char('?').blended(Color::WHITE).unwrap()
                     });
                 let w = surface.width();
